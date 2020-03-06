@@ -1,0 +1,415 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+	<title>My Smart Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+
+    <script src="../static/chartjs/jquery-1.12.3.min.js"></script>
+	<script src="../static/chartjs/Chart.bundle.min.js"></script>
+
+
+<!-- Style Sheet for Panel-Card START -->
+ <style type="text/css">
+	 canvas {-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;}
+	.card {border-style:solid; border-width:1px; border-radius:5px; border-color:#1A7EBE; background-color:#252830;}
+	.card-heading {text-align: center; margin-top:5px; margin-bottom:0;color:#cce6ff; font-weight: bold;}
+	.card-sub-heading {text-align: center; margin-top:5px; margin-bottom:0;}
+	.card-hr {margin-top:5px; margin-bottom:0;height:1px;border:none;color:#1A7EBE;background-color:#1A7EBE;}
+	.hr-div{padding-left:0;padding-right:0;margin-bottom:2px;}
+	.card-main-value {margin-top:2px;margin-bottom:0;}
+	.card-min-max {margin-top:0px;margin-bottom:2px;}
+	.card-canvas {width:100%; height:auto; padding-bottom:2px;padding-left:0px;padding-right:5px;}
+	
+	.temp-indoor-color {color:#1ABC9C;}
+	.temp-indoor-main-value-color {color:#1ABC9C;}
+	.temp-indoor-min-max-color {color:#CACFD2;}
+	.temp-outdoor-color {color:#F7DC6F;}
+	.temp-outdoor-main-value-color {color:#F7DC6F;}
+	.temp-outdoor-min-max-color {color:#CACFD2;}	
+ </style>
+<!-- Style Sheet for Panel-Card END -->
+ 
+	
+</head>
+
+<!--  <body background="../static/images/login_background.jpg" style="background-size: cover;"> -->
+
+<!--<body> #003366;  -->
+
+ <body style="background-color:#252830;">
+
+ 
+
+
+<!-- ================================================================= -->
+<!-- Login Form START -->
+<!-- ================================================================= -->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+      <a class="navbar-brand" href="#">My Smart Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<form class="navbar-form navbar-right" action="{{ url_for('logout') }}">            
+					<div class="form-group">
+						<span class="glyphicon glyphicon-user"></span>
+					</div>
+					<div class="form-group">
+
+						<span class="label">{{ session.get('User') }}</span>
+						<!--  <input type="password" placeholder="Password" class="form-control"> -->			  
+					</div>
+					<button type="submit" class="btn btn-success">Logout</button>
+				</form>
+				
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+<!-- =========================================================================== -->
+<!-- DASHBOARD CHARTS START -->
+<!-- =========================================================================== -->
+<div class="col-md-8 col-sm-8">
+
+
+<!-- =========================================================================== -->
+<!-- TEMPERATURE CARD START -->
+<!-- =========================================================================== -->
+<div class="col-md-6 col-sm-6">
+	<div class="panel card">
+		<!-- Panel-Card Heading -->
+		<div>
+			<h6 class="card-heading">Temperature</h6>
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Indoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-indoor-color" >Indoor</h6>
+			<h2 class="text-center card-main-value temp-indoor-main-value-color" >32<small class="temp-indoor-main-value-color">C</small></h2>
+			<h6 class="text-center card-min-max temp-indoor-min-max-color">Min: <b>22</b> | Max: <b>34</b></h6>
+		</div>
+		<!-- Panel-Card Outdoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-outdoor-color">Outdoor</h6>
+			<h2 class="text-center card-main-value temp-outdoor-main-value-color">34<small class="temp-outdoor-main-value-color">C</small></h2>
+			<h6 class="text-center card-min-max temp-outdoor-min-max-color">Min: <b>21</b> | Max: <b>36</b></h6>	
+		</div>	
+		<!-- Panel-Card Line -->	
+		<div class="col-md-12 col-sm-12 hr-div"> 
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Chart Canvas -->			
+		<div class="card-canvas">
+			<canvas id="temperature_canvas"></canvas>
+		</div>	
+	</div>
+</div>
+
+<script>
+        var temperature_background_indoor = "#1ABC9C";
+		var temperature_background_outdoor = "#F7DC6F";
+        var temperature_config = {
+            type: 'line',
+            data: {
+                labels: ["a", "b", "c", "d", "e", "f", "g", "a1", "a2", "a3", "a4"],
+                datasets: [{
+                    data: [10, 15, 35, 5, 20, 42, 10, 12,15,18,22],
+                    fill: false, borderColor: temperature_background_indoor, backgroundColor: temperature_background_indoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                },
+				{
+                    data: [12, 11, 18, 28, 32, 38, 40, 35,32,28,25],
+                    fill: false, borderColor: temperature_background_outdoor, backgroundColor: temperature_background_outdoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                }]
+            },
+            options: {
+
+                responsive: true,
+				events: ["click"],
+                legend: {display: false,},
+				xAxes: [{display: false}],			
+                scales: {xAxes: [{display: false, scaleLabel: {display: false,}}],
+                    yAxes: [{display: true, scaleLabel: {display: false,}, 				
+							gridLines: {display: true, color: "#566573",},}],},
+				}
+        };
+
+</script>
+<!-- =========================================================================== -->
+<!-- TEMPERATURE CARD END -->
+<!-- =========================================================================== -->
+
+
+
+
+<!-- =========================================================================== -->
+<!-- HUMIDITY CARD START -->
+<!-- =========================================================================== -->
+<div class="col-md-6 col-sm-6">
+	<div class="panel card">
+		<!-- Panel-Card Heading -->
+		<div>
+			<h6 class="card-heading">Humidity</h6>
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Indoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-indoor-color" >Indoor</h6>
+			<h2 class="text-center card-main-value temp-indoor-main-value-color" >50<small class="temp-indoor-main-value-color">%</small></h2>
+			<h6 class="text-center card-min-max temp-indoor-min-max-color">Min: <b>45</b> | Max: <b>60</b></h6>
+		</div>
+		<!-- Panel-Card Outdoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-outdoor-color">Outdoor</h6>
+			<h2 class="text-center card-main-value temp-outdoor-main-value-color">55<small class="temp-outdoor-main-value-color">%</small></h2>
+			<h6 class="text-center card-min-max temp-outdoor-min-max-color">Min: <b>52</b> | Max: <b>58</b></h6>	
+		</div>	
+		<!-- Panel-Card Line -->	
+		<div class="col-md-12 col-sm-12 hr-div"> 
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Chart Canvas -->			
+		<div class="card-canvas">
+			<canvas id="humidity_canvas"></canvas>
+		</div>	
+	</div>
+</div>
+
+<script>
+        var humidity_background_indoor = "#1ABC9C";
+		var humidity_background_outdoor = "#F7DC6F";
+        var humidity_config = {
+            type: 'line',
+            data: {
+                labels: ["a", "b", "c", "d", "e", "f", "g", "a1", "a2", "a3", "a4"],
+                datasets: [{
+                    data: [10, 15, 35, 5, 20, 42, 10, 12,15,18,22],
+                    fill: false, borderColor: humidity_background_indoor, backgroundColor: humidity_background_indoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                },
+				{
+                    data: [12, 11, 18, 28, 32, 38, 40, 35,32,28,25],
+                    fill: false, borderColor: humidity_background_outdoor, backgroundColor: humidity_background_outdoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+				events: ["click"],
+                legend: {display: false,},
+				xAxes: [{display: false}],			
+                scales: {xAxes: [{display: false, scaleLabel: {display: false,}}],
+                    yAxes: [{display: true, scaleLabel: {display: false,}, 				
+							gridLines: {display: true, color: "#566573",},}],},
+				}
+        };
+
+</script>
+<!-- =========================================================================== -->
+<!-- HUMIDITY CARD END -->
+<!-- =========================================================================== -->
+
+
+
+
+
+<!-- =========================================================================== -->
+<!-- PRESSURE CARD START -->
+<!-- =========================================================================== -->
+<div class="col-md-6 col-sm-6">
+	<div class="panel card">
+		<!-- Panel-Card Heading -->
+		<div>
+			<h6 class="card-heading">Pressure</h6>
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Indoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-indoor-color" >Indoor</h6>
+			<h2 class="text-center card-main-value temp-indoor-main-value-color" >102<small class="temp-indoor-main-value-color">%</small></h2>
+			<h6 class="text-center card-min-max temp-indoor-min-max-color">Min: <b>80</b> | Max: <b>130</b></h6>
+		</div>
+		<!-- Panel-Card Outdoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-outdoor-color">Outdoor</h6>
+			<h2 class="text-center card-main-value temp-outdoor-main-value-color">102<small class="temp-outdoor-main-value-color">%</small></h2>
+			<h6 class="text-center card-min-max temp-outdoor-min-max-color">Min: <b>80</b> | Max: <b>130</b></h6>	
+		</div>	
+		<!-- Panel-Card Line -->	
+		<div class="col-md-12 col-sm-12 hr-div"> 
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Chart Canvas -->			
+		<div class="card-canvas">
+			<canvas id="pressure_canvas"></canvas>
+		</div>	
+	</div>
+</div>
+
+<script>
+        var pressure_background_indoor = "#1ABC9C";
+		var pressure_background_outdoor = "#F7DC6F";
+        var pressure_config = {
+            type: 'line',
+            data: {
+                labels: ["a", "b", "c", "d", "e", "f", "g", ],
+                datasets: [{
+                    data: [90, 80, 103, 140, 120, 130, 90],
+                    fill: false, borderColor: pressure_background_indoor, backgroundColor: pressure_background_indoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                },
+				{
+                    data: [84, 96, 110, 105, 121, 129, 102],
+                    fill: false, borderColor: pressure_background_outdoor, backgroundColor: pressure_background_outdoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+				events: ["click"],
+                legend: {display: false,},
+				xAxes: [{display: false}],			
+                scales: {xAxes: [{display: false, scaleLabel: {display: false,}}],
+                    yAxes: [{display: true, scaleLabel: {display: false,}, 				
+							gridLines: {display: true, color: "#566573",},}],},
+				}
+        };
+
+</script>
+<!-- =========================================================================== -->
+<!-- PRESSURE CARD END -->
+<!-- =========================================================================== -->
+
+
+<!-- =========================================================================== -->
+<!-- LIGHT CARD START -->
+<!-- =========================================================================== -->
+<div class="col-md-6 col-sm-6">
+	<div class="panel card">
+		<!-- Panel-Card Heading -->
+		<div>
+			<h6 class="card-heading">Light</h6>
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Indoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-indoor-color" >Indoor</h6>
+			<h2 class="text-center card-main-value temp-indoor-main-value-color" >102<small class="temp-indoor-main-value-color">%</small></h2>
+			<h6 class="text-center card-min-max temp-indoor-min-max-color">Min: <b>80</b> | Max: <b>130</b></h6>
+		</div>
+		<!-- Panel-Card Outdoor Values -->		
+		<div class="col-md-6 col-sm-6">		
+			<h6 class="card-sub-heading temp-outdoor-color">Outdoor</h6>
+			<h2 class="text-center card-main-value temp-outdoor-main-value-color">102<small class="temp-outdoor-main-value-color">%</small></h2>
+			<h6 class="text-center card-min-max temp-outdoor-min-max-color">Min: <b>80</b> | Max: <b>130</b></h6>	
+		</div>	
+		<!-- Panel-Card Line -->	
+		<div class="col-md-12 col-sm-12 hr-div"> 
+			<hr class="card-hr"/>
+		</div>
+		<!-- Panel-Card Chart Canvas -->			
+		<div class="card-canvas">
+			<canvas id="light_canvas"></canvas>
+		</div>	
+	</div>
+</div>
+
+<script>
+        var light_background_indoor = "#1ABC9C";
+		var light_background_outdoor = "#F7DC6F";
+        var light_config = {
+            type: 'line',
+            data: {
+                labels: ["a", "b", "c", "d", "e", "f", "g", ],
+                datasets: [{
+                    data: [90, 80, 103, 140, 120, 130, 90],
+                    fill: false, borderColor: light_background_indoor, backgroundColor: light_background_indoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                },
+				{
+                    data: [84, 96, 110, 105, 121, 129, 102],
+                    fill: false, borderColor: light_background_outdoor, backgroundColor: light_background_outdoor, borderWidth: 2,
+					pointStyle: "circle", radius: 0,
+                }]
+            },
+            options: {
+
+                responsive: true,
+				events: ["click"],
+                legend: {display: false,},
+				xAxes: [{display: false}],			
+                scales: {xAxes: [{display: false, scaleLabel: {display: false,}}],
+                    yAxes: [{display: true, scaleLabel: {display: false,}, 				
+							gridLines: {display: true, color: "#566573",},}],},
+				}
+        };
+
+</script>
+<!-- =========================================================================== -->
+<!-- LIGHT CARD END -->
+<!-- =========================================================================== -->
+
+
+
+<script>
+        window.onload = function() {
+			var temperature_ctx = document.getElementById("temperature_canvas").getContext("2d");
+            temperature_chart = new Chart(temperature_ctx, temperature_config);
+			
+			var humidity_ctx = document.getElementById("humidity_canvas").getContext("2d");
+            humidity_chart = new Chart(humidity_ctx, humidity_config);
+			
+			var pressure_ctx = document.getElementById("pressure_canvas").getContext("2d");
+            pressure_chart = new Chart(pressure_ctx, pressure_config);
+			
+			var light_ctx = document.getElementById("light_canvas").getContext("2d");
+            light_chart = new Chart(light_ctx, light_config);
+			
+        };
+
+</script>
+
+
+</div>
+<!-- =========================================================================== -->
+<!-- DASHBOARD CHARTS END -->
+<!-- =========================================================================== -->
+
+
+
+<!-- =========================================================================== -->
+<!-- NOTIFICATION PANEL START -->
+<!-- =========================================================================== -->
+<div class="col-md-4 col-sm-4">
+	<div class="panel card" style='height: 85%'>
+		<!-- Panel-Card Heading -->
+		<div>
+			<h6 class="card-heading">Notification Panel</h6>
+			<hr class="card-hr"/>
+		</div>
+
+	</div>
+</div>
+<!-- =========================================================================== -->
+<!-- NOTIFICATION PANEL START -->
+<!-- =========================================================================== -->
+
+
+
+
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</html>

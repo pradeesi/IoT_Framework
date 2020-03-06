@@ -1,0 +1,151 @@
+<!-- Panel START -->
+<div class="panel panel-primary">
+	
+	<!-- Panel Heading START -->
+	<div class="panel-heading">
+		<b>Add Controller</b>
+	<!-- Panel Heading END -->
+	</div>
+	
+	<!-- Panel Body START -->
+	<div class="panel-body">
+
+		<!-- FORM START -->	
+		<form class="form-horizontal" role="form" action="" method=post> 
+				
+			<!-- Select Controller / ControllerCode -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Controller:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="ControllerCode" name="ControllerCode" placeholder="Select Controller..." required>
+				</div>						
+			</div>
+					
+			<!-- Enter Alias/ Controller Name -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Controller Name:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="ControllerAlias" name="ControllerAlias" placeholder="Enter ControllerName..." required>
+				</div>						
+			</div>
+			
+			<!-- Select LocationID/Part Of House -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Location:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="LocationID" name="LocationID" placeholder="Select Location..." required>
+				</div>						
+			</div>	
+				
+			<!-- Select PlacementCode / Controller Placement -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Placement:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="PlacementCode" name="PlacementCode" placeholder="Select Placement..." required>
+				</div>						
+			</div>						
+														
+			<!-- Enter Description -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Description:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="Description" name="Description" placeholder="Enter Description...">
+				</div>						
+			</div>
+				
+			<!-- Enter HostName -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">HostName:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="HostName" name="HostName" placeholder="Enter HostName...">
+				</div>						
+			</div>
+			
+			<!-- Select OperatingSystemCode /OperatingSystem -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Operating System:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="OperatingSystemCode" name="OperatingSystemCode" placeholder="Select Operating System...">
+				</div>						
+			</div>
+		
+			<!-- Enter KeepAlive Interval (Sec) -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Keep Alive Int (Sec):</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="KeepAliveInterval" name="KeepAliveInterval" placeholder="KeepAlive Interval in Sec...">
+				</div>						
+			</div>
+
+			<!-- Enter MAC Address -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">MAC Address:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="MAC" name="MAC" placeholder="MAC Address...">
+				</div>						
+			</div>
+			
+			<!-- Select IP Addressing Scheme (DHCP / Static) -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">IP Assignment:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="IPAssignment" name="IPAssignment" placeholder="IP Assignment...">
+				</div>						
+			</div>
+
+			<!-- Enter IP Address -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">IP Address:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="IPAdd" name="IPAdd" placeholder="IP Address...">
+				</div>						
+			</div>
+				
+			<!-- Enter Subnet Mask -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Subnet Mask:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="SubMask" name="SubMask" placeholder="Subnet Mask...">
+				</div>						
+			</div>
+
+			<!-- Enter Gateway IP -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Gateway IP:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="Gateway" name="Gateway" placeholder="Gateway IP...">
+				</div>						
+			</div>	
+
+			<!-- Enter DNS IP -->				
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">DNS IP:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="DNS" name="DNS" placeholder="DNS IP...">
+				</div>						
+			</div>		
+										
+ 	<!-- Panel Body END -->
+	</div>
+		
+			<!-- Panel Footer START -->
+			<div class="panel-footer panel-primary">
+				
+					<!-- Buttons -->
+					<div class="col-md-12 col-sm-12">
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="submit" class="btn btn-success"> Save </button>
+							<a class="btn btn-primary">Cancel</a>
+						</div>
+					</div>
+					<!-- Following Div is required to fit above buttons within this footer -->
+					<div class="clearfix"></div>
+					
+			<!-- Panel Footer END -->		
+			</div>
+	
+		<!-- FORM END -->
+		</form>
+		
+<!-- Panel END -->
+</div>

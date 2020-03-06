@@ -1,0 +1,27 @@
+1. install pip
+
+sudo easy_install pip
+
+
+2. check installed programs 
+
+pip freeze 
+			
+			
+3. install packages -	
+		
+sudo pip install paho-mqtt
+
+sudo pip install PyDrive
+
+sudo pip install twitter
+
+sudo pip install facebook-sdk
+
+pip install --upgrade google-api-python-client
+
+sudo apt-get install vlc
+
+
+
+

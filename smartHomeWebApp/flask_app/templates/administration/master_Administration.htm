@@ -1,0 +1,73 @@
+{% extends "template_Root.htm" %}
+{% block main_content %}
+
+
+	<!-- Administration Panel START -->
+	<div class="panel panel-primary">
+				
+		<!-- Administration Panel Heading START -->
+		<div class="panel-heading">
+			<b>Smart Administration</b>
+		<!-- Administration Panel Heading END -->
+		</div>
+				
+		<!-- Administration Panel Body START -->
+		<div class="panel-body">
+			
+			<!-- Administration Menu Nav Tabs START -->
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default active" onclick="Load_Home_Tab()">
+					<input type="radio" name="options" id="option1" autocomplete="off" checked>House
+				</label>
+				<label class="btn btn-default" onclick="Load_Owner_Tab()">
+					<input type="radio" name="options" id="option2" autocomplete="off">Owners
+				</label>
+				<label class="btn btn-default">
+					<input type="radio" name="options" id="option3" autocomplete="off">Parts of House
+				</label>
+			</div>
+			<!-- Administration Menu Nav Tabs END -->
+
+			
+			<!-- Div to host different Tabs / Pages START -->
+			<div id="tab_Page">
+				<!-- Contents in this block will be added via Ajax Calls -->
+			</div>
+			<!-- Div to host different Tabs / Pages END -->
+			
+					
+		<!-- Administration Panel Body END -->
+		</div>
+				
+	<!-- Administration Panel END -->
+	</div>
+
+	
+	<script>
+	
+		// Form load function
+		$(document).ready(function () {
+			Load_Home_Tab();
+		});
+		
+		// Ajax Call to load Home Tab
+		function Load_Home_Tab() {
+			var url="{{url_for('bp_Administration.tab_House')}}";	
+				$.get(url, function(data, status){
+				$("#tab_Page").html(data);	
+			});
+		}
+		
+		// Ajax Call to load Owner Tab
+		function Load_Owner_Tab() {
+			var url="{{url_for('bp_Administration.tab_Owner')}}";	
+				$.get(url, function(data, status){
+				$("#tab_Page").html(data);	
+			});
+		}		
+	
+	</script>
+
+
+{% endblock %}
+

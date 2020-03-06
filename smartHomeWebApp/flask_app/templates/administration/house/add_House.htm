@@ -1,0 +1,139 @@
+<!-- Panel START -->
+<div class="panel panel-primary">
+		
+	<!-- Panel Heading START -->
+	<div class="panel-heading">
+		<b>Add House</b>
+	<!-- Panel Heading END -->
+	</div>
+		
+	<!-- Panel Body START -->
+	<div class="panel-body">
+
+		<!-- FORM START -->	
+		<form class="form-horizontal" role="form" action="" method=post> 
+			
+			<!-- Enter HouseNumber -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">House Number:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="HouseNumber" name="HouseNumber" placeholder="Enter House Number..." required>
+				</div>						
+			</div>
+					
+			<!-- Enter House Name/Alias -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">House Name:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="HouseAlias" name="HouseAlias" placeholder="Enter House Name / Alias..." required>
+				</div>						
+			</div>	
+					
+			<!-- Enter Block Number -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Block:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="Block" name="Block" placeholder="Enter Block...">
+				</div>						
+			</div>
+						
+			<!-- Enter Floor Number -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Floor:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="Floor" name="Floor" placeholder="Enter Floor Number...">
+				</div>						
+			</div>				
+
+			<!-- Enter Locality -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Locality:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="Locality" name="Locality" placeholder="Enter Locality Name...">
+				</div>						
+			</div>					
+								
+			<!-- Address Line 1 -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Address Line 1:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="AddressLine1" name="AddressLine1" placeholder="Address Line 1...">
+				</div>						
+			</div>	
+					
+			<!-- Address Line 2 -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Address Line 2:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="AddressLine2" name="AddressLine2" placeholder="Address Line 2...">
+				</div>						
+			</div>
+				
+			
+			<!-- City -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">City:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="City" name="City" placeholder="Enter City Name...">
+				</div>						
+			</div>	
+	
+			<!-- State -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">State:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="State" name="State" placeholder="Enter State Name...">
+				</div>						
+			</div>
+	
+			<!-- Country -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Country:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="Country" name="Country" placeholder="Enter Country Name...">
+				</div>						
+			</div>		
+			
+			<!-- Postal Code / Pin -->
+			<div class="form-group col-md-6 col-sm-12">	
+				<div class="text-left col-md-4 col-sm-4">Postal Code:</div>
+				<div class="text-left col-md-8 col-sm-8">
+					<input type="text" class="form-control input-sm" id="PostalCode" name="PostalCode" placeholder="Enter PostalCode...">
+				</div>						
+			</div>	
+														
+	  	<!-- Panel Body END -->
+		</div>
+		
+			<!-- Panel Footer START -->
+			<div class="panel-footer panel-primary">
+				
+					<!-- Buttons -->
+					<div class="col-md-12 col-sm-12">
+						<div class="btn-group" role="group" aria-label="...">
+							{% if Operation == "add" %}
+								<button type="submit" class="btn btn-success"> Save </button>
+							{% elif Operation == "edit" %}
+								<button type="submit" class="btn btn-success"> Update </button>							
+							{% elif Operation == "del" %}
+								<button type="submit" class="btn btn-danger"> Delete </button>
+							{% endif %}
+							
+							{% if Operation == "view" %}							
+								<a class="btn btn-primary" data-dismiss="modal">OK</a>
+							{% else %}
+								<a class="btn btn-primary" data-dismiss="modal">Cancel</a>
+							{% endif %}							
+						</div>
+					</div>
+					<!-- Following Div is required to fit above buttons within this footer -->
+					<div class="clearfix"></div>
+						
+			<!-- Panel Footer END -->		
+			</div>
+		
+		<!-- FORM END -->
+		</form>
+		
+<!-- Panel END -->
+</div>

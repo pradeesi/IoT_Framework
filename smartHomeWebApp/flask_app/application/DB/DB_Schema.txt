@@ -1,0 +1,203 @@
+Table Name: HouseMaster
+
+Project
+HouseID
+HouseNumber
+Block
+Floor
+AddLine1
+AddLine2
+AddLine3
+City
+State
+Country
+PostalCode
+
+
+Table Name: HouseOwnerMaster
+
+HouseID
+Title
+FirstName
+MiddleName
+LastName
+Gender
+Email
+MobileNo
+PhoneNo
+Address
+
+
+TableName: FloorPlan
+
+HouseID
+Location
+
+
+
+
+
+
+
+
+Table Name: ControllerMaster
+
+ID:
+Name:
+Type: Arduino, Raspbery, ESP8266
+Location:
+Placement:
+Description:
+HostName:
+IPAssignment: DHCP / Static
+IPAdd:
+SubMask:
+MAC:
+KeepAliveInterval:
+Status:
+Error:
+LastMessage:
+RecCreationDate:
+RecCreatedBy:
+RecUpdationDate:
+RecUpdatedBy:
+
+
+=======================================================================
+=======================================================================
+Table Name: Sensor Master 
+
+ID: Unique Sensor ID
+Name: Sensor Name
+ControllerID: Sensor Controller/Host ID. ForEx: ID Assigned to  ESP8266, Raspbery Pi or Arduino
+Type: For Ex: Temperature and Humidity
+Location: For Ex: Room1
+Placement: Indoor/Outdoor
+Description: something
+KeepAliveInterval:
+Status: Working Non-working
+Error: Any error
+LastMessage: Date when last message was received from this sensors
+RecCreationDate:
+RecCreatedBy:
+RecUpdationDate:
+RecUpdatedBy:
+
+
+=======================================================================
+=======================================================================
+Table Name: Appliance Master 
+
+ID: Unique Sensor ID
+Name: Sensor Name
+ControllerID: Sensor Controller/Host ID. ForEx: ID Assigned to  ESP8266, Raspbery Pi or Arduino
+Type: For Ex: Light, Geyser, Fridge, WashingMachine
+Location: For Ex: Room1
+Placement: Indoor/Outdoor
+Description: something
+KeepAliveInterval:
+Status: Working Non-working
+Error: Any error
+LastMessage: Date when last message was received from this sensors
+RecCreationDate:
+RecCreatedBy:
+RecUpdationDate:
+RecUpdatedBy:
+
+
+=======================================================================
+=======================================================================
+
+
+
+=======================================================================
+=======================================================================
+Table Name: ControllerTypes
+
+SeqNo:
+Code: c0,c1,c2
+Type: Arduino, RaspberryPi, ESP8266
+Image:
+
+=======================================================================
+=======================================================================
+Table Name: SensorTypes
+
+SeqNo:
+Code: s0,s1,s2,s3
+Type: Temperature, Temperature and Humidity
+Image:
+
+=======================================================================
+=======================================================================
+Table Name: ApplianceTypes
+
+SeqNo:
+Code: a0,a1,a2,a3
+Type: Light, Geyser, Fridge, WashingMachine
+Image:
+
+
+=======================================================================
+=======================================================================
+Table Name: SensorDataUnit
+
+SeqNo:
+Code: s0,s1,s2
+Unit: Celsius, Fahrenheit etc
+
+
+=======================================================================
+=======================================================================
+Table Name: DevicePlacement
+
+SeqNo:
+Code: L0, L1 
+Location: Indoor, Outdoor
+
+=======================================================================
+=======================================================================
+
+Table Name: TemperatureData
+
+SensorID:
+DateTime:
+Temperature:
+
+=======================================================================
+=======================================================================
+
+Table Name: HumidityData
+
+SensorID:
+DateTime:
+Humidity:
+
+=======================================================================
+=======================================================================
+
+Table Name: LightData
+
+SensorID:
+DateTime:
+Light:
+
+=======================================================================
+=======================================================================
+Table Name: PressureData
+
+SensorID:
+DateTime:
+Pressure:
+
+=======================================================================
+=======================================================================
+
+Table Name: NoiseData
+
+SensorID:
+DateTime:
+Pressure:
+
+
+
